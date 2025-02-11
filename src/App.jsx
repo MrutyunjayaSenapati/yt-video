@@ -1,37 +1,19 @@
-import React, { useEffect, useState } from "react";
-import VideoPlayer from "./components/VideoPlayer";
-import VideoList from "./components/VideoList";
-import SearchBar from "./components/SearchBar";
-import { fetchTrendingVideos, searchVideos } from "./api";
+import React from 'react'
+import Navbar from './components/Navbar'
+import {Routes, Route} from 'react-router-dom'
+import Home from './components/Home.jsx'
 
-const App = () => {
-  const [videos, setVideos] = useState([]);
-  const [selectedVideo, setSelectedVideo] = useState(null);
 
-  useEffect(() => {
-    loadTrendingVideos();
-  }, []);
-
-  const loadTrendingVideos = async () => {
-    const videos = await fetchTrendingVideos();
-    setVideos(videos);
-    setSelectedVideo(videos[0].id);
-  };
-
-  const handleSearch = async (query) => {
-    const results = await searchVideos(query);
-    setVideos(results);
-    setSelectedVideo(results[0]?.id?.videoId);
-  };
+export default function App() {
+ 
 
   return (
     <div>
-      <h1>YouTube Clone</h1>
-      <SearchBar onSearch={handleSearch} />
-      <VideoPlayer videoId={selectedVideo} />
-      <VideoList videos={videos} onSelect={setSelectedVideo} />
-    </div>
-  );
-};
+      <Navbar />
+     <Routes>
+      <Route path="/" element={<Home/>} />
 
-export default App;
+     </Routes>
+    </div>
+  )
+}
