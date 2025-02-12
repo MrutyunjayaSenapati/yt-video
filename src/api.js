@@ -13,11 +13,11 @@ export const fetchTrendingVideos = async () => {
         chart: "mostPopular",
         regionCode: "IN",
         maxResults: 100,
-        key: API_KEY.replace(/['";]/g, ""), // ✅ Fixed: No need for `.replace()`
+        key: API_KEY.replace(/['";]/g, ""), 
       },
     });
 
-    console.log("Trending Videos:", data.items); // ✅ Proper Logging
+    console.log("Trending Videos:", data.items); 
 
     if (!data.items || data.items.length === 0) {
       console.warn("No trending videos found.");
@@ -38,7 +38,7 @@ export const searchVideos = async (query) => {
         part: "snippet",
         q: query,
         type: "video",
-        maxResults: 10,
+        maxResults: 50,
         key: API_KEY,
       },
     });

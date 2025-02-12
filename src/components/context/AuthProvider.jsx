@@ -8,7 +8,7 @@ export default function AuthProvider({ children }) {
   const [data, setData] = useState([]);
   const [value, setValue] = useState("New");
 
-  // ✅ Function to fetch data properly
+  
   const fetchAllData = async (query) => {
     try {
       setLoading(true);
