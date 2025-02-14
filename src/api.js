@@ -3,7 +3,12 @@ import axios from "axios";
 const BASE_URL = "https://www.googleapis.com/youtube/v3";
 const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
 
+const Base_URL2="https://youtube138.p.rapidapi.com";
+
+const API_KEY2=import.meta.env.VITE_YOUTUBE_API_KEY2;
+
 console.log("API Key:", API_KEY); 
+console.log("API Key2:", API_KEY2); 
 
 export const fetchTrendingVideos = async () => {
   try {
@@ -30,6 +35,25 @@ export const fetchTrendingVideos = async () => {
     return [];
   }
 };
+
+const options={
+  headers:{
+    'x-rapidapi-key': API_KEY2,
+		'x-rapidapi-host': 'youtube138.p.rapidapi.com'
+  }
+}
+
+export const showVideoData=async(url)=>{
+  try {
+    const {data}=await axios.get(`${Base_URL2}/${url}`,options);
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error("Error fetching rapid api data: ",error);
+    throw error;
+    
+  }
+}
 
 export const searchVideos = async (query) => {
   try {
