@@ -1,3 +1,27 @@
+/* index.css or global.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Dark mode styles for the entire app */
+.dark {
+  @apply bg-gray-900 text-white transition-all;
+}
+
+.dark input, 
+.dark textarea, 
+.dark select {
+  @apply bg-gray-800 text-white border-gray-600;
+}
+
+.dark button {
+  @apply bg-gray-700 text-white hover:bg-gray-600;
+}
+
+.dark .navbar {
+  @apply bg-gray-900 text-white;
+}
+
+.dark .card {
+  @apply bg-gray-800 text-white shadow-lg;
+}

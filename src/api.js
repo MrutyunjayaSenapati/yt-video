@@ -43,17 +43,24 @@ const options={
   }
 }
 
-export const showVideoData=async(url)=>{
+export const showVideoData = async (url, params = {}) => {
   try {
-    const {data}=await axios.get(`${Base_URL2}/${url}`,options);
-    console.log(data);
+    const { data } = await axios.get(`${Base_URL2}/${url}`, {
+      params, // Add dynamic query params if needed
+      headers: {
+        'x-rapidapi-key': API_KEY2.replace(/['";]/g, ""),
+        'x-rapidapi-host': 'youtube138.p.rapidapi.com',
+      },
+    });
+
+    console.log("Fetched Data:", data);
     return data;
   } catch (error) {
-    console.error("Error fetching rapid api data: ",error);
+    console.error("Error fetching rapid API data:", error);
     throw error;
-    
   }
-}
+};
+
 
 export const searchVideos = async (query) => {
   try {
